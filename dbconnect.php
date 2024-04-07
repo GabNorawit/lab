@@ -1,9 +1,16 @@
 <?php 
 session_start();
-    $host = "localhost";
-    $user = "620112230005";
-    $passwd = "NVrYawyszI5Z4iop";
-    $db = "620112230005__fiscal";
+    $db_host = "localhost";
+    $db_name = "equipment";
+    $db_user = "root";
+    $db_password = "";
 
-    $connect=mysqli_connect("$host","$user","$passwd","$db") or die("เกิดข้อผิดพลาดเกิดขึ้น");
+    try {
+        $db = new PDO("mysql:host={$db_host}; dbname={$db_name}", $db_user, $db_password );
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
+    catch(PDOException $e) {
+        $e->getMessage();
+    }
+    
 ?>
